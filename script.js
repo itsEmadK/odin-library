@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(
     title, author, pages, haveRead
 ) {
@@ -5,4 +7,8 @@ function Book(
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
+}
+
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 }
