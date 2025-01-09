@@ -31,9 +31,8 @@
 
 
 :root {
-    --padding-left: 2em;
-    --header-padd-vert: 1.5em;
-    --footer-padding:1em 0
+    --header-padding: 1.5em 2em;
+    --footer-padding: 1em 0
 }
 
 
@@ -52,9 +51,7 @@ footer {
 
 
 header {
-    padding-top: var(--header-padd-vert);
-    padding-bottom: var(--header-padd-vert);
-    padding-left: var(--padding-left);
+    padding: var(--header-padding)
 }
 
 footer {
