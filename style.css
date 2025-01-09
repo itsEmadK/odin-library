@@ -51,6 +51,10 @@
     --book-item-button-padding: 8px 4em;
 }
 
+button {
+    cursor: pointer;
+}
+
 
 body {
     display: grid;
