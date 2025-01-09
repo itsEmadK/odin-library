@@ -23,6 +23,11 @@
     src: url(./fonts/Poppins-Medium.ttf);
 }
 
+@font-face {
+    font-family: "Poppins-semi-bold";
+    src: url(./fonts/Poppins-SemiBold.ttf);
+}
+
 
 * {
     padding: 0;
@@ -80,7 +85,7 @@ main {
 button.add-book {
     background-color: transparent;
     border: none;
-    font-family: Poppins-medium;
+    font-family: Poppins-semi-bold;
     font-size: 1.2em;
     cursor: pointer;
 }
