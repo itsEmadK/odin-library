@@ -32,7 +32,8 @@
 
 :root {
     --header-padding: 1.5em 2em;
-    --footer-padding: 1em 0
+    --footer-padding: 1em 0;
+    --header-box-shadow: 0px 0px 10px rgb(187, 187, 187);
 }
 
 
@@ -51,7 +52,9 @@ footer {
 
 
 header {
-    padding: var(--header-padding)
+    padding: var(--header-padding);
+    margin-bottom: 5px;
+    box-shadow: var(--header-box-shadow);
 }
 
 footer {
