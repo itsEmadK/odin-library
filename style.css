@@ -115,6 +115,7 @@ button.add-book {
 .book-item {
     display: grid;
     gap: 16px;
+    max-width: 400px;
     background-color: white;
     padding: 16px;
     border-radius: var(--book-item-border-radius);
