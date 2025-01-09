@@ -30,6 +30,12 @@
 }
 
 
+:root {
+    --padding-left: 2em;
+    --header-padd-vert: 1.5em;
+}
+
+
 body {
     display: grid;
     height: 100vh;
@@ -44,8 +50,8 @@ footer {
 }
 
 
-main,
-footer,
 header {
-    padding: 1em;
+    padding-top: var(--header-padd-vert);
+    padding-bottom: var(--header-padd-vert);
+    padding-left: var(--padding-left);
 }
