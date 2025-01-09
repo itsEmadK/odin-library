@@ -33,7 +33,9 @@
 :root {
     --header-padding: 1.5em 2em;
     --footer-padding: 1em 0;
-    --header-box-shadow: 0px 0px 10px rgb(187, 187, 187);
+    --header-box-shadow: 0px 0px 5px rgb(187, 187, 187);
+    --body-bg-color: #efefef;
+    --header-bg-color: white;
 }
 
 
@@ -42,12 +44,13 @@ body {
     height: 100vh;
     grid-template-rows: auto 1fr auto;
     font-family: Poppins;
+    background-color: var(--body-bg-color);
 }
 
 
 main,
 footer {
-    background-color: #efefef;
+    background-color: var(--body-bg-color);
 }
 
 
@@ -55,6 +58,7 @@ header {
     padding: var(--header-padding);
     margin-bottom: 5px;
     box-shadow: var(--header-box-shadow);
+    background-color: var(--header-bg-color);
 }
 
 footer {
