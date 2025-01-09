@@ -67,3 +67,17 @@ footer {
     align-items: center;
     padding: 1em 0;
 }
+
+main {
+    display: grid;
+    align-items: start;
+    justify-items: center;
+}
+
+button.add-book {
+    background-color: transparent;
+    border: none;
+    font-family: Poppins;
+    font-size: 1.2em;
+    cursor: pointer;
+}
