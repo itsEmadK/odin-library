@@ -89,3 +89,14 @@ button.add-book {
     font-size: 1.2em;
     cursor: pointer;
 }
+
+.book-item {
+    display: grid;
+    gap: 16px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgb(189, 189, 189);
+    font-family: Poppins-medium;
+    font-size: 1.2em;
+}
