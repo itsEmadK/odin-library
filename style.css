@@ -37,6 +37,7 @@
     --header-box-shadow: 0px 0px 5px rgb(187, 187, 187);
     --body-bg-color: #efefef;
     --header-bg-color: white;
+    --main-margin-top: 2em;
 }
 
 
@@ -57,7 +58,6 @@ footer {
 
 header {
     padding: var(--header-padding);
-    margin-bottom: 5px;
     box-shadow: var(--header-box-shadow);
     background-color: var(--header-bg-color);
     font-family: Poppins-bold;
@@ -71,6 +71,7 @@ footer {
 }
 
 main {
+    margin-top: var(--main-margin-top);
     display: grid;
     align-items: start;
     justify-items: center;
