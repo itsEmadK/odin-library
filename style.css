@@ -107,6 +107,10 @@ button.add-book {
     font-size: 1.2em;
 }
 
+.book-item p {
+    justify-self: center;
+}
+
 .book-item button {
     font-family: Poppins-medium;
     padding: var(--book-item-button-padding);
