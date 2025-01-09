@@ -42,3 +42,10 @@ main,
 footer {
     background-color: #efefef;
 }
+
+
+main,
+footer,
+header {
+    padding: 1em;
+}
