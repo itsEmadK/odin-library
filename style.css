@@ -43,6 +43,7 @@
     --body-bg-color: #efefef;
     --header-bg-color: white;
     --main-margin-top: 2em;
+    --book-item-border-radius: 8px;
 }
 
 
@@ -95,7 +96,7 @@ button.add-book {
     gap: 16px;
     background-color: white;
     padding: 16px;
-    border-radius: 4px;
+    border-radius: var(--book-item-border-radius);
     box-shadow: 0px 0px 4px rgb(189, 189, 189);
     font-family: Poppins-medium;
     font-size: 1.2em;
