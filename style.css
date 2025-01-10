@@ -170,3 +170,15 @@ button.book-read-status:hover.read {
 button.remove-book:hover {
     background-color: var(--remove-book-button-bg-color-hovered);
 }
+
+dialog {
+    border-radius: var(--book-item-border-radius);
+    background-color: var(--body-bg-color);
+}
+
+dialog form {
+    font-size: 0.8em;
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+}
