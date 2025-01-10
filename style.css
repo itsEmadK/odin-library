@@ -219,9 +219,24 @@ dialog form input[type="checkbox"] {
     border: 1px solid grey;
 }
 
+dialog form input[type="checkbox"]:checked:active {
+    background-color: rgb(227, 227, 227);
+}
+
 dialog form input[type="checkbox"]:checked {
     border: none;
 }
+
+
+dialog form input[type="checkbox"]:hover {
+    border: 1px solid black;
+}
+
+dialog form input[type="checkbox"]:active {
+    border: 1px solid rgb(227, 227, 227);
+}
+
+
 
 dialog form input[type="checkbox"]:checked::after {
     content: "";
