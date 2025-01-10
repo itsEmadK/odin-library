@@ -15,6 +15,8 @@ dialogDiscardButton.addEventListener("click", () => {
 addBookDialog.addEventListener("click", (e) => {
     const elRect = addBookDialog.getBoundingClientRect();
 
+    //Pressing enter in a form also triggers click of the submit button so here we are.
+    const actuallyClicked = !(e.clientX === 0 && e.clientY === 0);
     const clickedInsideDialog = (
         e.clientX >= elRect.left &&
         e.clientX <= elRect.right &&
@@ -22,7 +24,7 @@ addBookDialog.addEventListener("click", (e) => {
         e.clientY <= elRect.bottom
     );
 
-    if (!clickedInsideDialog) {
+    if (!clickedInsideDialog && actuallyClicked) {
         addBookDialog.close();
     }
 
@@ -37,32 +39,6 @@ addBookDialog.addEventListener("close", () => {
 dialogAddButton.addEventListener("click", () => {
     handleDialogAddClick();
 });
-
-dialogAddButton.addEventListener("keydown", (e => {
-    if (e.code === "Enter" || e.code === "Space") {
-        e.preventDefault();
-        handleDialogAddClick();
-    }
-}));
-
-
-const textInputs = document.querySelectorAll(`input:is([type="text"],[type="number"])`);
-textInputs.forEach((input) => {
-    input.addEventListener("keydown", (e) => {
-        if (e.code === "Enter") {
-            e.preventDefault();
-        }
-    });
-});
-
-const checkbox = document.querySelector("label > input");
-checkbox.addEventListener("keydown", (e) => {
-    if (e.code === "Space" || e.code === "Enter") {
-        checkbox.checked = !checkbox.checked;
-        e.preventDefault();
-    }
-});
-
 
 
 function Book(
