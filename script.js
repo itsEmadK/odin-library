@@ -12,14 +12,21 @@ dialogDiscardButton.addEventListener("click", () => {
     addBookDialog.close();
 });
 
-const dialogInnerWrapper = document.querySelector("dialog>div");
-addBookDialog.addEventListener("click", () => {
-    addBookDialog.close();
-});
-dialogInnerWrapper.addEventListener("click", (e) => {
-    e.stopPropagation();
-});
+addBookDialog.addEventListener("click", (e) => {
+    const elRect = addBookDialog.getBoundingClientRect();
 
+    const clickedInsideDialog = (
+        e.clientX >= elRect.left &&
+        e.clientX <= elRect.right &&
+        e.clientY >= elRect.top &&
+        e.clientY <= elRect.bottom
+    );
+
+    if (!clickedInsideDialog) {
+        addBookDialog.close();
+    }
+
+});
 
 function Book(
     title, author, pages, haveRead
