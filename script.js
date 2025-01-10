@@ -1,12 +1,10 @@
 const myLibrary = [];
 
-addBookToLibrary((new Book("A", "B", "pages", true)));
-addBookToLibrary((new Book("A", "B", "pages", true)));
-addBookToLibrary((new Book("A", "B", "pages", false)));
-addBookToLibrary((new Book("A", "B", "pages", false)));
-addBookToLibrary((new Book("A", "B", "pages", true)));
-
-displayBooks();
+const addBookDialog = document.querySelector("dialog.add-book-dialog")
+const addBookButton = document.querySelector("button.add-book");
+addBookButton.addEventListener("click", () => {
+    addBookDialog.showModal()
+});
 
 function Book(
     title, author, pages, haveRead
