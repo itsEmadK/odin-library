@@ -29,27 +29,15 @@ addBookDialog.addEventListener("click", (e) => {
 });
 
 dialogAddButton.addEventListener("click", () => {
-
-    const form = addBookDialog.querySelector("form");
-    if (form.checkValidity()) {
-
-        const titleInp = document.querySelector("#book-title-input")
-        const authorInp = document.querySelector("#book-author-input")
-        const pagesInp = document.querySelector("#book-pages-input")
-        const haveReadCheckbox = document.querySelector("#book-read-status-checkbox")
-
-        const title = titleInp.value;
-        const author = authorInp.value;
-        const pages = +pagesInp.value;
-        const haveRead = haveReadCheckbox.checked;
-
-        const book = new Book(title, author, pages, haveRead)
-        addBookToLibrary(book);
-        displayBooks();
-        addBookDialog.close();
-        form.reset();
-    }
+    handleDialogAddClick();
 });
+
+dialogAddButton.addEventListener("keydown", (e => {
+    if (e.code === "Enter") {
+        e.preventDefault();
+        handleDialogAddClick();
+    }
+}));
 
 
 const textInputs = document.querySelectorAll(`input:is([type="text"],[type="number"])`);
@@ -129,4 +117,29 @@ function displayBooks() {
 
         booksContainerDiv.appendChild(bookItemDiv);
     }));
+}
+
+
+function handleDialogAddClick() {
+    const form = addBookDialog.querySelector("form");
+
+    form.reportValidity(); //To report the validity to user even on pressing enter.
+    if (form.checkValidity()) {
+
+        const titleInp = document.querySelector("#book-title-input")
+        const authorInp = document.querySelector("#book-author-input")
+        const pagesInp = document.querySelector("#book-pages-input")
+        const haveReadCheckbox = document.querySelector("#book-read-status-checkbox")
+
+        const title = titleInp.value;
+        const author = authorInp.value;
+        const pages = +pagesInp.value;
+        const haveRead = haveReadCheckbox.checked;
+
+        const book = new Book(title, author, pages, haveRead)
+        addBookToLibrary(book);
+        displayBooks();
+        addBookDialog.close();
+        form.reset();
+    }
 }
