@@ -12,6 +12,15 @@ dialogDiscardButton.addEventListener("click", () => {
     addBookDialog.close();
 });
 
+const dialogInnerWrapper = document.querySelector("dialog>div");
+addBookDialog.addEventListener("click", () => {
+    addBookDialog.close();
+});
+dialogInnerWrapper.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+
+
 function Book(
     title, author, pages, haveRead
 ) {
