@@ -28,6 +28,12 @@ addBookDialog.addEventListener("click", (e) => {
 
 });
 
+
+addBookDialog.addEventListener("close", () => {
+    const form = addBookDialog.querySelector("form");
+    form.reset();
+})
+
 dialogAddButton.addEventListener("click", () => {
     handleDialogAddClick();
 });
@@ -122,9 +128,7 @@ function displayBooks() {
 
 function handleDialogAddClick() {
     const form = addBookDialog.querySelector("form");
-
-    form.reportValidity(); //To report the validity to user even on pressing enter.
-    if (form.checkValidity()) {
+    if (form.reportValidity()) {
 
         const titleInp = document.querySelector("#book-title-input")
         const authorInp = document.querySelector("#book-author-input")
@@ -140,6 +144,5 @@ function handleDialogAddClick() {
         addBookToLibrary(book);
         displayBooks();
         addBookDialog.close();
-        form.reset();
     }
 }
