@@ -10,6 +10,23 @@
 
 <body>
 
+
+    <dialog open>
+        <form>
+            <h2>Add new book</h2>
+            <input type="text" placeholder="Title" id="book-title-input">
+            <input type="text" placeholder="Author" id="book-author-input">
+            <input type="number" placeholder="Pages" id="book-pages-input">
+            <label for="book-read-status-checkbox">
+                Have your read it?
+                <input type="checkbox" name="have-read" id="book-read-status-checkbox">
+            </label>
+            <button class="dialog-add-book">Add</button>
+            <button class="dialog-discard">Discard</button>
+        </form>
+    </dialog>
+
+
     <header>
         <h1>library</h1>
     </header>
