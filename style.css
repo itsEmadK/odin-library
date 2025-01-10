@@ -182,3 +182,8 @@ dialog form {
     gap: 16px;
     padding: 16px;
 }
+
+
+dialog form h2 {
+    justify-self: center;
+}
