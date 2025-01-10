@@ -52,6 +52,8 @@
     --books-container-padding: var(--header-padding);
     --books-container-gap: 40px;
     --add-book-bg-color-hovered: rgb(216, 216, 216);
+    --book-item-box-shadow: 0px 0px 4px rgb(189, 189, 189);
+    --book-item-box-shadow-hovered: 0px 0px 16px rgb(189, 189, 189);
 }
 
 button {
@@ -126,9 +128,13 @@ button.add-book:hover {
     background-color: white;
     padding: 16px;
     border-radius: var(--book-item-border-radius);
-    box-shadow: 0px 0px 4px rgb(189, 189, 189);
+    box-shadow: var(--book-item-box-shadow);
     font-family: Poppins-medium;
     font-size: 1.2em;
+}
+
+.book-item:hover {
+    box-shadow: var(--book-item-box-shadow-hovered);
 }
 
 .book-item p {
