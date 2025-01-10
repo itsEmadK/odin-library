@@ -6,6 +6,12 @@ addBookButton.addEventListener("click", () => {
     addBookDialog.showModal()
 });
 
+const dialogAddButton = document.querySelector(".dialog-add-book");
+const dialogDiscardButton = document.querySelector(".dialog-discard");
+dialogDiscardButton.addEventListener("click", () => {
+    addBookDialog.close();
+});
+
 function Book(
     title, author, pages, haveRead
 ) {
