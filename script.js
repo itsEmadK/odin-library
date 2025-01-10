@@ -51,6 +51,17 @@ dialogAddButton.addEventListener("click", () => {
     }
 });
 
+
+const checkbox = document.querySelector("label > input");
+checkbox.addEventListener("keydown", (e) => {
+    if (e.code === "Space" || e.code === "Enter") {
+        checkbox.checked = !checkbox.checked;
+        e.preventDefault();
+    }
+});
+
+
+
 function Book(
     title, author, pages, haveRead
 ) {
