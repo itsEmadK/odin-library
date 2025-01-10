@@ -201,3 +201,34 @@ dialog form input:is([type="text"], [type="number"]) {
     padding: 8px;
     font-size: 1.3em;
 }
+
+dialog form label:has(>input[type="checkbox"]) {
+    font-size: 1.2em;
+    justify-self: center;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+dialog form input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    /* accent-color: white; */
+    appearance: none;
+    border-radius: 0px;
+    border: 1px solid grey;
+}
+
+dialog form input[type="checkbox"]:checked {
+    border: none;
+}
+
+dialog form input[type="checkbox"]:checked::after {
+    content: "";
+    background-color: black;
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1;
+    clip-path: polygon(82.03% 9.5%, 94.26% 19.47%, 36.47% 90.33%, 8.44% 59.68%, 21.18% 48.02%, 36.47% 65.36%);
+}
