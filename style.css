@@ -171,11 +171,17 @@ button.remove-book:hover {
     background-color: var(--remove-book-button-bg-color-hovered);
 }
 
+::backdrop {
+    background-color: grey;
+    opacity: 0.5;
+}
+
 dialog {
     border-radius: var(--book-item-border-radius);
     background-color: var(--body-bg-color);
     position: absolute;
     margin: auto;
+    border: none;
 }
 
 dialog form {
