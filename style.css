@@ -47,7 +47,10 @@
     --book-item-bg-color: white;
     --book-item-button-border-radius: 4px;
     --read-status-btn-bg-color: rgb(145, 248, 190);
+    --read-status-btn-bg-color-hovered: rgb(88, 222, 146);
     --unread-status-btn-bg-color: rgb(248, 145, 145);
+    --unread-status-btn-bg-color-hovered: rgb(229, 95, 95);
+    --remove-book-button-bg-color-hovered: rgb(220, 220, 220);
     --book-item-button-padding: 8px;
     --books-container-padding: var(--header-padding);
     --books-container-gap: 40px;
@@ -153,6 +156,18 @@ button.book-read-status {
     background-color: var(--unread-status-btn-bg-color);
 }
 
+button.book-read-status:hover {
+    background-color: var(--unread-status-btn-bg-color-hovered);
+}
+
 button.book-read-status.read {
     background-color: var(--read-status-btn-bg-color);
+}
+
+button.book-read-status:hover.read {
+    background-color: var(--read-status-btn-bg-color-hovered);
+}
+
+button.remove-book:hover {
+    background-color: var(--remove-book-button-bg-color-hovered);
 }
