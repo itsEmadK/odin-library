@@ -39,7 +39,7 @@ dialogAddButton.addEventListener("click", () => {
 });
 
 dialogAddButton.addEventListener("keydown", (e => {
-    if (e.code === "Enter") {
+    if (e.code === "Enter" || e.code === "Space") {
         e.preventDefault();
         handleDialogAddClick();
     }
