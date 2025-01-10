@@ -232,3 +232,22 @@ dialog form input[type="checkbox"]:checked::after {
     aspect-ratio: 1;
     clip-path: polygon(82.03% 9.5%, 94.26% 19.47%, 36.47% 90.33%, 8.44% 59.68%, 21.18% 48.02%, 36.47% 65.36%);
 }
+
+dialog form button {
+    padding: var(--book-item-button-padding);
+    font-family: Poppins-medium;
+    font-size: 1.3em;
+}
+
+dialog form button {
+    border: none;
+    border-radius: var(--book-item-button-border-radius);
+}
+
+dialog form button.dialog-add-book {
+    background-color: var(--read-status-btn-bg-color);
+}
+
+dialog form button.dialog-discard {
+    background-color: white;
+}
