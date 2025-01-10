@@ -52,6 +52,15 @@ dialogAddButton.addEventListener("click", () => {
 });
 
 
+const textInputs = document.querySelectorAll(`input:is([type="text"],[type="number"])`);
+textInputs.forEach((input) => {
+    input.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+            e.preventDefault();
+        }
+    });
+});
+
 const checkbox = document.querySelector("label > input");
 checkbox.addEventListener("keydown", (e) => {
     if (e.code === "Space" || e.code === "Enter") {
