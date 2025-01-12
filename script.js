@@ -59,9 +59,10 @@ function displayBooks() {
     const booksContainerDiv = document.querySelector(".books-container");
     booksContainerDiv.innerHTML = "";
 
-    myLibrary.forEach((book => {
+    myLibrary.forEach(((book, index) => {
         const bookItemDiv = document.createElement("div");
         bookItemDiv.classList.add("book-item");
+        bookItemDiv.dataset.bookIndex = index;
 
         const bookTitlePara = document.createElement("p");
         bookTitlePara.classList.add("book-title");
