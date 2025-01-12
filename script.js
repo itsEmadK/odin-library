@@ -13,21 +13,9 @@ dialogDiscardButton.addEventListener("click", () => {
 });
 
 addBookDialog.addEventListener("click", (e) => {
-    const elRect = addBookDialog.getBoundingClientRect();
-
-    //Pressing enter in a form also triggers click of the submit button so here we are.
-    const actuallyClicked = !(e.clientX === 0 && e.clientY === 0);
-    const clickedInsideDialog = (
-        e.clientX >= elRect.left &&
-        e.clientX <= elRect.right &&
-        e.clientY >= elRect.top &&
-        e.clientY <= elRect.bottom
-    );
-
-    if (!clickedInsideDialog && actuallyClicked) {
+    if (shouldCloseDialog(addBookDialog, e.clientX, e.clientY)) {
         addBookDialog.close();
     }
-
 });
 
 
@@ -44,6 +32,15 @@ dialogAddButton.addEventListener("click", () => {
 const removeConfirmationDialog = document.querySelector("dialog.remove-book-confirmation");
 const removeConfirmButton = removeConfirmationDialog.querySelector(".remove-confirm");
 const removeCancelButton = removeConfirmationDialog.querySelector(".remove-cancel");
+
+removeConfirmationDialog.addEventListener("click", (e) => {
+
+    if (shouldCloseDialog(removeConfirmationDialog, e.clientX, e.clientY)) {
+        removeConfirmationDialog.close();
+    }
+
+});
+
 
 removeConfirmationDialog.addEventListener("close", () => {
     const index = +removeConfirmationDialog.returnValue;
@@ -168,4 +165,19 @@ function removeBookFromLibrary(index) {
 
 function toggleBookReadStatus(index) {
     myLibrary[index].haveRead = !myLibrary[index].haveRead;
+}
+
+
+function shouldCloseDialog(dialogEl, clickX, clickY) {
+
+    const rect = dialogEl.getBoundingClientRect();
+    const clickedInsideDialog = (
+        clickX >= rect.left &&
+        clickX <= rect.right &&
+        clickY >= rect.top &&
+        clickY <= rect.bottom
+    );
+    //Pressing enter in a form also triggers click of the submit button so here we are.
+    const actuallyClicked = !(clickX === 0 && clickY === 0);
+    return actuallyClicked && !clickedInsideDialog;
 }
