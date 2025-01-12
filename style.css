@@ -271,7 +271,7 @@ dialog form button.dialog-discard {
     background-color: white;
 }
 
-dialog.remove-book-confirmation {
+dialog.remove-book-confirmation div {
     display: grid;
     padding: var(--dialog-padding);
     gap: 16px;
