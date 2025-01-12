@@ -41,6 +41,23 @@ dialogAddButton.addEventListener("click", () => {
 });
 
 
+const removeConfirmationDialog = document.querySelector("dialog.remove-book-confirmation");
+const removeConfirmButton = removeConfirmationDialog.querySelector(".remove-confirm");
+const removeCancelButton = removeConfirmationDialog.querySelector(".remove-cancel");
+removeConfirmationDialog.addEventListener("click", () => {
+    const index = +removeConfirmationDialog.returnValue;
+    if (index != -1) {
+        removeBookFromLibrary(index)
+    }
+});
+removeConfirmButton.addEventListener("click", () => {
+    removeConfirmationDialog.close();
+});
+removeCancelButton.addEventListener("click", () => {
+    removeConfirmationDialog.returnValue = "-1";
+    removeConfirmationDialog.close();
+});
+
 function Book(
     title, author, pages, haveRead
 ) {
@@ -96,7 +113,7 @@ function displayBooks() {
             bookReadStatusButton.classList.toggle("read");
             if (bookReadStatusButton.classList.contains("read")) {
                 bookReadStatusButton.innerText = "Read";
-            }else{
+            } else {
                 bookReadStatusButton.innerText = "Not Read";
             }
         });
@@ -105,7 +122,8 @@ function displayBooks() {
         removeBookButton.addEventListener("click", (e) => {
             const index = bookItemDiv.dataset.bookIndex;
             //TODO: Display a confirmation modal first.
-            removeBookFromLibrary(index);
+            removeConfirmationDialog.returnValue = `${index}`;
+            removeConfirmationDialog.showModal();
         });
 
         bookItemDiv.appendChild(bookTitlePara);
