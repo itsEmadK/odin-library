@@ -44,13 +44,16 @@ dialogAddButton.addEventListener("click", () => {
 const removeConfirmationDialog = document.querySelector("dialog.remove-book-confirmation");
 const removeConfirmButton = removeConfirmationDialog.querySelector(".remove-confirm");
 const removeCancelButton = removeConfirmationDialog.querySelector(".remove-cancel");
-removeConfirmationDialog.addEventListener("click", () => {
+
+removeConfirmationDialog.addEventListener("close", () => {
     const index = +removeConfirmationDialog.returnValue;
-    if (index != -1) {
+    if (index > -1) {
         removeBookFromLibrary(index)
     }
 });
 removeConfirmButton.addEventListener("click", () => {
+    const confirmedReturnValue = removeConfirmationDialog.returnValue.substring(1);
+    removeConfirmationDialog.returnValue = confirmedReturnValue;
     removeConfirmationDialog.close();
 });
 removeCancelButton.addEventListener("click", () => {
@@ -122,7 +125,7 @@ function displayBooks() {
         removeBookButton.addEventListener("click", (e) => {
             const index = bookItemDiv.dataset.bookIndex;
             //TODO: Display a confirmation modal first.
-            removeConfirmationDialog.returnValue = `${index}`;
+            removeConfirmationDialog.returnValue = `n${index}`;
             removeConfirmationDialog.showModal();
         });
 
