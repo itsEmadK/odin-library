@@ -90,6 +90,17 @@ function displayBooks() {
         } else {
             bookReadStatusButton.innerText = "Not Read"
         }
+        bookReadStatusButton.addEventListener("click", () => {
+            const index = bookItemDiv.dataset.bookIndex;
+            toggleBookReadStatus(index);
+            bookReadStatusButton.classList.toggle("read");
+            if (bookReadStatusButton.classList.contains("read")) {
+                bookReadStatusButton.innerText = "Read";
+            }else{
+                bookReadStatusButton.innerText = "Not Read";
+            }
+        });
+
         removeBookButton.innerText = "Remove";
         removeBookButton.addEventListener("click", (e) => {
             const index = bookItemDiv.dataset.bookIndex;
@@ -132,4 +143,8 @@ function handleDialogAddClick() {
 function removeBookFromLibrary(index) {
     myLibrary.splice(index, 1);
     displayBooks();
+}
+
+function toggleBookReadStatus(index) {
+    myLibrary[index].haveRead = !myLibrary[index].haveRead;
 }
