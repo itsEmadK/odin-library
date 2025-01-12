@@ -293,3 +293,15 @@ dialog.remove-book-confirmation button {
 dialog.remove-book-confirmation p {
     line-height: 1.35;
 }
+
+dialog button[class*="add"]:hover {
+    background-color: var(--read-status-btn-bg-color-hovered);
+}
+
+dialog button[class*="remove"]:hover {
+    background-color: var(--unread-status-btn-bg-color-hovered);
+}
+
+dialog button[class*="cancel"]:hover {
+    background-color: var(--remove-book-button-bg-color-hovered);
+}
