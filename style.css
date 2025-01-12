@@ -57,6 +57,8 @@
     --add-book-bg-color-hovered: rgb(216, 216, 216);
     --book-item-box-shadow: 0px 0px 4px rgb(189, 189, 189);
     --book-item-box-shadow-hovered: 0px 0px 16px rgb(189, 189, 189);
+    --dialog-padding: 16px;
+    --remove-confirmation-dialog-max-width: 36ch;
 }
 
 button {
@@ -187,7 +189,7 @@ dialog form {
     font-size: 0.8em;
     display: grid;
     gap: 16px;
-    padding: 16px;
+    padding: var(--dialog-padding);
 }
 
 
@@ -267,4 +269,27 @@ dialog form button.dialog-add-book {
 
 dialog form button.dialog-discard {
     background-color: white;
+}
+
+dialog.remove-book-confirmation {
+    display: grid;
+    padding: var(--dialog-padding);
+    gap: 16px;
+    max-width: var(--remove-confirmation-dialog-max-width);
+}
+
+dialog.remove-book-confirmation button.remove-confirm {
+    background-color: var(--unread-status-btn-bg-color);
+}
+
+dialog.remove-book-confirmation button.remove-cancel {
+    background-color: white;
+}
+
+dialog.remove-book-confirmation button {
+    font-family: Poppins-medium;
+}
+
+dialog.remove-book-confirmation p {
+    line-height: 1.35;
 }
