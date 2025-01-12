@@ -91,6 +91,11 @@ function displayBooks() {
             bookReadStatusButton.innerText = "Not Read"
         }
         removeBookButton.innerText = "Remove";
+        removeBookButton.addEventListener("click", (e) => {
+            const index = bookItemDiv.dataset.bookIndex;
+            //TODO: Display a confirmation modal first.
+            removeBookFromLibrary(index);
+        });
 
         bookItemDiv.appendChild(bookTitlePara);
         bookItemDiv.appendChild(bookAuthorPara);
@@ -122,4 +127,9 @@ function handleDialogAddClick() {
         displayBooks();
         addBookDialog.close();
     }
+}
+
+function removeBookFromLibrary(index) {
+    myLibrary.splice(index, 1);
+    displayBooks();
 }
