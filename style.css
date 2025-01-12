@@ -61,6 +61,12 @@
 
 button {
     cursor: pointer;
+    padding: var(--book-item-button-padding);
+    font-family: Poppins-semi-bold;
+    cursor: pointer;
+    border-radius: var(--book-item-button-border-radius);
+    border: none;
+    font-size: 1em;
 }
 
 
@@ -103,12 +109,7 @@ main {
 
 button.add-book {
     background-color: transparent;
-    border: none;
-    font-family: Poppins-semi-bold;
     font-size: 1.2em;
-    cursor: pointer;
-    padding: var(--book-item-button-padding);
-    border-radius: var(--book-item-button-border-radius);
 }
 
 
@@ -147,10 +148,6 @@ button.add-book:hover {
 
 .book-item button {
     font-family: Poppins-medium;
-    padding: var(--book-item-button-padding);
-    font-size: 1em;
-    border-radius: var(--book-item-button-border-radius);
-    border: none;
 }
 
 button.book-read-status {
@@ -259,15 +256,10 @@ dialog form input[type="checkbox"]:checked::after {
 }
 
 dialog form button {
-    padding: var(--book-item-button-padding);
     font-family: Poppins-medium;
     font-size: 1.3em;
 }
 
-dialog form button {
-    border: none;
-    border-radius: var(--book-item-button-border-radius);
-}
 
 dialog form button.dialog-add-book {
     background-color: var(--read-status-btn-bg-color);
