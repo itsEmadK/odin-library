@@ -58,13 +58,18 @@ removeCancelButton.addEventListener("click", () => {
     removeConfirmationDialog.close();
 });
 
-function Book(
-    title, author, pages, haveRead
-) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = haveRead;
+class Book {
+    title;
+    author;
+    pages;
+    haveRead;
+    constructor(title, author, pages, haveRead
+    ) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = haveRead;
+    }
 }
 
 function addBookToLibrary(book) {
