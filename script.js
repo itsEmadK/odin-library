@@ -147,89 +147,6 @@ function shouldCloseDialog(dialogEl, clickX, clickY) {
     return actuallyClicked && !clickedInsideDialog;
 }
 
-let myLibrary = [];
-loadDataFromLocalStorage();
-displayBooks();
-
-const addBookDialog = document.querySelector("dialog.add-book-dialog")
-const addBookButton = document.querySelector("button.add-book");
-addBookButton.addEventListener("click", () => {
-    addBookDialog.showModal()
-});
-
-const titleInp = addBookDialog.querySelector("input#book-title-input");
-titleInp.addEventListener("input", ()=>{
-    validateTitleInput();
-});
-
-const authorInp = addBookDialog.querySelector("input#book-author-input");
-authorInp.addEventListener("input", ()=>{
-    validateAuthorInput();
-});
-
-const pagesInp = addBookDialog.querySelector("input#book-pages-input");
-pagesInp.addEventListener("input", ()=>{
-    validatePagesInput();
-});
-
-
-const dialogAddButton = document.querySelector(".dialog-add-book");
-const dialogDiscardButton = document.querySelector(".dialog-discard");
-dialogDiscardButton.addEventListener("click", () => {
-    addBookDialog.querySelector("form").reset();
-    titleInp.setCustomValidity("");
-    authorInp.setCustomValidity("");
-    pagesInp.setCustomValidity("");
-    addBookDialog.close();
-});
-
-addBookDialog.addEventListener("click", (e) => {
-    if (shouldCloseDialog(addBookDialog, e.clientX, e.clientY)) {
-        addBookDialog.close();
-    }
-});
-
-
-addBookDialog.addEventListener("close", () => {
-    const form = addBookDialog.querySelector("form");
-    form.reset();
-})
-
-dialogAddButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    handleDialogAddClick();
-});
-
-
-const removeConfirmationDialog = document.querySelector("dialog.remove-book-confirmation");
-const removeConfirmButton = removeConfirmationDialog.querySelector(".remove-confirm");
-const removeCancelButton = removeConfirmationDialog.querySelector(".remove-cancel");
-
-removeConfirmationDialog.addEventListener("click", (e) => {
-
-    if (shouldCloseDialog(removeConfirmationDialog, e.clientX, e.clientY)) {
-        removeConfirmationDialog.close();
-    }
-
-});
-
-
-removeConfirmationDialog.addEventListener("close", () => {
-    const index = +removeConfirmationDialog.returnValue;
-    if (index > -1) {
-        removeBookFromLibrary(index)
-    }
-});
-removeConfirmButton.addEventListener("click", () => {
-    const confirmedReturnValue = removeConfirmationDialog.returnValue.substring(1);
-    removeConfirmationDialog.returnValue = confirmedReturnValue;
-    removeConfirmationDialog.close();
-});
-removeCancelButton.addEventListener("click", () => {
-    removeConfirmationDialog.returnValue = "-1";
-    removeConfirmationDialog.close();
-});
-
 
 function validateTitleInput() {
     const titleInp = document.querySelector("input#book-title-input");
@@ -319,3 +236,87 @@ function validatePagesInput() {
         return;
     }
 }
+
+let myLibrary = [];
+loadDataFromLocalStorage();
+displayBooks();
+
+const addBookDialog = document.querySelector("dialog.add-book-dialog")
+const addBookButton = document.querySelector("button.add-book");
+addBookButton.addEventListener("click", () => {
+    addBookDialog.showModal()
+});
+
+const titleInp = addBookDialog.querySelector("input#book-title-input");
+titleInp.addEventListener("input", ()=>{
+    validateTitleInput();
+});
+
+const authorInp = addBookDialog.querySelector("input#book-author-input");
+authorInp.addEventListener("input", ()=>{
+    validateAuthorInput();
+});
+
+const pagesInp = addBookDialog.querySelector("input#book-pages-input");
+pagesInp.addEventListener("input", ()=>{
+    validatePagesInput();
+});
+
+
+const dialogAddButton = document.querySelector(".dialog-add-book");
+const dialogDiscardButton = document.querySelector(".dialog-discard");
+dialogDiscardButton.addEventListener("click", () => {
+    addBookDialog.querySelector("form").reset();
+    titleInp.setCustomValidity("");
+    authorInp.setCustomValidity("");
+    pagesInp.setCustomValidity("");
+    addBookDialog.close();
+});
+
+addBookDialog.addEventListener("click", (e) => {
+    if (shouldCloseDialog(addBookDialog, e.clientX, e.clientY)) {
+        addBookDialog.close();
+    }
+});
+
+
+addBookDialog.addEventListener("close", () => {
+    const form = addBookDialog.querySelector("form");
+    form.reset();
+})
+
+dialogAddButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    handleDialogAddClick();
+});
+
+
+const removeConfirmationDialog = document.querySelector("dialog.remove-book-confirmation");
+const removeConfirmButton = removeConfirmationDialog.querySelector(".remove-confirm");
+const removeCancelButton = removeConfirmationDialog.querySelector(".remove-cancel");
+
+removeConfirmationDialog.addEventListener("click", (e) => {
+
+    if (shouldCloseDialog(removeConfirmationDialog, e.clientX, e.clientY)) {
+        removeConfirmationDialog.close();
+    }
+
+});
+
+
+removeConfirmationDialog.addEventListener("close", () => {
+    const index = +removeConfirmationDialog.returnValue;
+    if (index > -1) {
+        removeBookFromLibrary(index)
+    }
+});
+removeConfirmButton.addEventListener("click", () => {
+    const confirmedReturnValue = removeConfirmationDialog.returnValue.substring(1);
+    removeConfirmationDialog.returnValue = confirmedReturnValue;
+    removeConfirmationDialog.close();
+});
+removeCancelButton.addEventListener("click", () => {
+    removeConfirmationDialog.returnValue = "-1";
+    removeConfirmationDialog.close();
+});
+
