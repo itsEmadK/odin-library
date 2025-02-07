@@ -130,6 +130,7 @@ function loadDataFromLocalStorage() {
 
 function toggleBookReadStatus(index) {
     myLibrary[index].haveRead = !myLibrary[index].haveRead;
+    updateLocalStorage();
 }
 
 
