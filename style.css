@@ -197,18 +197,46 @@ dialog form h2 {
     justify-self: center;
 }
 
+dialog form p {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 220px;
+}
+
+dialog form span {
+    color: rgb(241, 28, 28);
+    font-weight: bold;
+}
 
 dialog form input {
     font-family: Poppins-medium;
     border-radius: var(--book-item-button-border-radius);
     border: none;
     background-color: white;
-    max-width: 220px;
 }
 
 dialog form input:is([type="text"], [type="number"]) {
     padding: 8px;
     font-size: 1.3em;
+}
+
+dialog form input:is([type="text"], [type="number"]):focus:invalid {
+    outline-color: red;
+}
+
+dialog form input:is([type="text"], [type="number"]):user-invalid {
+    outline: 2px solid red;
+    background-color: rgb(244, 190, 190);
+}
+
+dialog form input:is([type="text"], [type="number"]):user-valid {
+    outline: 2px solid green;
+    background-color: rgb(163, 229, 166);
+}
+
+span[class*="error"]{
+    width: 100%;
 }
 
 dialog form label:has(>input[type="checkbox"]) {

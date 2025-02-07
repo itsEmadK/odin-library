@@ -82,10 +82,12 @@ function displayBooks() {
     }));
 }
 
-
 function handleDialogAddClick() {
     const form = addBookDialog.querySelector("form");
-    if (form.reportValidity()) {
+    validateTitleInput();
+    validateAuthorInput();
+    validatePagesInput();    
+    if (form.checkValidity()) {
 
         const titleInp = document.querySelector("#book-title-input")
         const authorInp = document.querySelector("#book-author-input")
@@ -100,6 +102,7 @@ function handleDialogAddClick() {
         const book = new Book(title, author, pages, haveRead)
         addBookToLibrary(book);
         displayBooks();
+        form.reset();
         addBookDialog.close();
     }
 }
@@ -154,9 +157,29 @@ addBookButton.addEventListener("click", () => {
     addBookDialog.showModal()
 });
 
+const titleInp = addBookDialog.querySelector("input#book-title-input");
+titleInp.addEventListener("input", ()=>{
+    validateTitleInput();
+});
+
+const authorInp = addBookDialog.querySelector("input#book-author-input");
+authorInp.addEventListener("input", ()=>{
+    validateAuthorInput();
+});
+
+const pagesInp = addBookDialog.querySelector("input#book-pages-input");
+pagesInp.addEventListener("input", ()=>{
+    validatePagesInput();
+});
+
+
 const dialogAddButton = document.querySelector(".dialog-add-book");
 const dialogDiscardButton = document.querySelector(".dialog-discard");
 dialogDiscardButton.addEventListener("click", () => {
+    addBookDialog.querySelector("form").reset();
+    titleInp.setCustomValidity("");
+    authorInp.setCustomValidity("");
+    pagesInp.setCustomValidity("");
     addBookDialog.close();
 });
 
@@ -172,7 +195,8 @@ addBookDialog.addEventListener("close", () => {
     form.reset();
 })
 
-dialogAddButton.addEventListener("click", () => {
+dialogAddButton.addEventListener("click", (e) => {
+    e.preventDefault();
     handleDialogAddClick();
 });
 
@@ -206,3 +230,92 @@ removeCancelButton.addEventListener("click", () => {
     removeConfirmationDialog.close();
 });
 
+
+function validateTitleInput() {
+    const titleInp = document.querySelector("input#book-title-input");
+    const titleError = document.querySelector(".title-error");
+
+    titleInp.setCustomValidity("");
+    titleError.innerText = ""
+
+    if (titleInp.validity.valueMissing) {
+        titleInp.setCustomValidity("You have to specify a name for this book");
+        titleError.innerText = "You have to specify a name for this book";
+        return;
+    }
+
+    if (titleInp.validity.tooShort) {
+        titleInp.setCustomValidity("Book's title should be at least 4 characters long");
+        titleError.innerText = "Book's title  should be at least 4 characters long";
+        return;
+    }
+
+    if (titleInp.validity.tooLong) {
+        titleInp.setCustomValidity("Book's title  should be at most 30 characters long");
+        titleInp.innerText = "Book's title should be at most 30 characters long";
+        return;
+    }
+
+}
+
+function validateAuthorInput() {
+    const authorInp = document.querySelector("input#book-author-input");
+    const authorError = document.querySelector(".author-error");
+
+    authorInp.setCustomValidity("");
+    authorError.innerText = ""
+
+    if (authorInp.validity.valueMissing) {
+        authorInp.setCustomValidity("You have to specify an author for this book");
+        authorError.innerText = "You have to specify an author for this book";
+        return;
+    }
+
+    if (authorInp.validity.tooShort) {
+        authorInp.setCustomValidity("Author's name should be at least 4 characters long");
+        authorError.innerText = "Author's name should be at least 4 characters long";
+        return;
+    }
+
+    if (authorInp.validity.tooLong) {
+        authorInp.setCustomValidity("Author's name should be at most 30 characters long");
+        authorInp.innerText = "Author's name should be at most 30 characters long";
+        return;
+    }
+
+    const regex = /\d/;
+    if (regex.test(authorInp.value.toString())) {
+        authorInp.setCustomValidity("Author's name can not contain any digits");
+        authorError.innerText = "Author's name can not contain any digits";
+        return;
+    }
+
+}
+
+function validatePagesInput() {
+    const pagesInp = document.querySelector("input#book-pages-input");
+    const pagesError = document.querySelector(".pages-error");
+
+    pagesInp.setCustomValidity("");
+    pagesError.innerText = ""
+
+    if (pagesInp.validity.valueMissing) {
+        pagesInp.setCustomValidity("You have to specify a value for pages");
+        pagesError.innerText = "You have to specify a value for pages";
+        return;
+    }
+
+    if (pagesInp.validity.rangeUnderflow) {
+        const min = +pagesInp.min;
+        pagesInp.setCustomValidity(`The number of pages can not be less than ${min}`);
+        pagesError.innerText = `The number of pages can not be less than ${min}`;
+        return;
+    }
+
+    if (pagesInp.validity.rangeOverflow) {
+        const max = +pagesInp.max;
+        pagesInp.setCustomValidity(`The number of pages can not be less than ${max}`);
+        pagesError.innerText = `The number of pages can not be less than ${max}`;
+        return;
+    }
+}

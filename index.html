@@ -12,16 +12,27 @@
 
 
     <dialog class="add-book-dialog">
-        <form>
+        <form novalidate>
             <h2>Add new book</h2>
-            <input autofocus name="title" required type="text" placeholder="Title" id="book-title-input">
-            <input required name="author" type="text" placeholder="Author" id="book-author-input">
-            <input required name="pages" min="0" max="4500" type="number" placeholder="Pages" id="book-pages-input">
-            <label for="book-read-status-checkbox">
-                Have your read it?
-                <input type="checkbox" name="have-read" id="book-read-status-checkbox">
-            </label>
-            <button formmethod="dialog" class="dialog-add-book">Add</button>
+            <p>
+                <input autofocus name="title" required minlength="4" maxlength="30" type="text" placeholder="Title" id="book-title-input">
+                <span class="title-error"></span>
+            </p>
+            <p>
+                <input required  name="author" type="text" placeholder="Author" minlength="4" maxlength="30" id="book-author-input">
+                <span class="author-error"></span>
+            </p>
+            <p>
+                <input required name="pages" min="0" max="10000" type="number" placeholder="Pages" id="book-pages-input">
+                <span class="pages-error"></span>
+            </p>
+            <p>
+                <label for="book-read-status-checkbox">
+                    Have your read it?
+                    <input type="checkbox" name="have-read" id="book-read-status-checkbox">
+                </label>
+            </p>
+            <button type="submit" class="dialog-add-book">Add</button>
             <button type="button" class="dialog-discard">Discard</button>
         </form>
     </dialog>
